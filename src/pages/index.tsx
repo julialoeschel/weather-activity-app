@@ -33,7 +33,15 @@ export default function Home() {
       const data = await response.json();
       setWeather(data);
     }
-    getWether();
+
+    const timer = setInterval(() => {
+      getWether();
+    }, 5000);
+
+    // cleanup function
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   function handleAdd(activity: { [k: string]: FormDataEntryValue }) {
@@ -42,6 +50,11 @@ export default function Home() {
 
   const goodWeatherActivities = todos.filter((todo) => todo.weather === "on");
   const badWeatherActivities = todos.filter((todo) => todo.weather !== "on");
+
+  function handleDelete(id: string) {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  }
 
   return (
     <>
@@ -56,6 +69,7 @@ export default function Home() {
           todos={
             weather.isGoodWeather ? goodWeatherActivities : badWeatherActivities
           }
+          onDelete={handleDelete}
         ></List>
         <Form onAddActivity={handleAdd}></Form>
       </main>

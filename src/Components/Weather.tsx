@@ -38,4 +38,5 @@ const Section = styled.section`
 
 const Introduction = styled.p`
   grid-column: 1 / 3;
+  margin-bottom: 1rem;
 `;
