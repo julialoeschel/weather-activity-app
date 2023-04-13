@@ -38,7 +38,6 @@ export default function Home() {
       getWether();
     }, 5000);
 
-    // cleanup function
     return () => {
       clearInterval(timer);
     };
