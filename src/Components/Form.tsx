@@ -24,9 +24,14 @@ export default function From({ onAddActivity }: FormProps) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2>HEADING</h2>
-      <label htmlFor="activity">activity</label>
-      <input type="text" name="activity" id="activity" />
+      <h2>Create your activity</h2>
+      <label htmlFor="activity">activity: </label>
+      <input
+        type="text"
+        name="activity"
+        id="activity"
+        placeholder="e.g.Beach Volleyball"
+      />
       <Checkbox htmlFor="weather">
         is the activity for good weather?{" "}
         <input type="checkbox" name="weather" id="weather" />
@@ -38,11 +43,16 @@ export default function From({ onAddActivity }: FormProps) {
 }
 
 const Form = styled.form`
-  margin-top: 1rem;
+  margin: 2rem 0;
   padding: 0.5rem;
   display: grid;
   grid-template-columns: 20% 1fr;
-  gap: 0.4rem;
+  gap: 1rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: #f1eaf0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   h2 {
     grid-column: 1 / 3;
