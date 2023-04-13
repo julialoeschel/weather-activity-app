@@ -1,6 +1,4 @@
-import { FormEvent } from "react";
 import styled from "styled-components";
-import { uid } from "uid";
 
 type ListProps = {
   todos: {
