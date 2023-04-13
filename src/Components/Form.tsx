@@ -1,18 +1,25 @@
 import { FormEvent } from "react";
 import styled from "styled-components";
+import { uid } from "uid";
 
 type FormProps = {
-  onAddActivity: (activity: string) => void;
+  onAddActivity: (activity: { [k: string]: FormDataEntryValue }) => void;
 };
 
-export default function From() {
+export default function From({ onAddActivity }: FormProps) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const data = Object.fromEntries(formData);
+    const data: { [k: string]: FormDataEntryValue } =
+      Object.fromEntries(formData);
     event.currentTarget.reset();
 
-    console.log(data);
+    const fullEntry: { [k: string]: FormDataEntryValue } = {
+      ...data,
+      id: uid(),
+    };
+
+    onAddActivity(fullEntry);
   }
 
   return (
