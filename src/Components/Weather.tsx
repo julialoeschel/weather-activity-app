@@ -10,16 +10,32 @@ type WeatherProps = {
 };
 
 export default function Weather({ weather }: WeatherProps) {
-  console.log(weather);
   return (
-    <section>
+    <Section>
       <p>{weather.condition}</p>
-      <p>{weather.temperature}</p>
+      <p>{weather.temperature} °C</p>
       {weather.isGoodWeather ? (
-        <p>AWESOME! Go Outside!</p>
+        <Introduction>AWESOME! Go Outside!</Introduction>
       ) : (
-        <p>Bad Wetehr! here are some options</p>
+        <Introduction>Bad Weatehr! here are some options:</Introduction>
       )}
-    </section>
+    </Section>
   );
 }
+
+const Section = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  p {
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+  }
+`;
+
+const Introduction = styled.p`
+  grid-column: 1 / 3;
+`;
