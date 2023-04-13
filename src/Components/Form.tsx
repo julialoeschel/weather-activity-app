@@ -1,4 +1,5 @@
 import { FormEvent } from "react";
+import styled from "styled-components";
 
 type FormProps = {
   onAddActivity: (activity: string) => void;
@@ -15,13 +16,31 @@ export default function From() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <h2>HEADING</h2>
       <label htmlFor="activity">activity</label>
       <input type="text" name="activity" id="activity" />
-      <label htmlFor="weather">is the activity for good weather?</label>
-      <input type="checkbox" name="weather" id="weather" />
+      <Checkbox htmlFor="weather">
+        is the activity for good weather?{" "}
+        <input type="checkbox" name="weather" id="weather" />
+      </Checkbox>
+
       <button>submit</button>
-    </form>
+    </Form>
   );
 }
+
+const Form = styled.form`
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  gap: 0.4rem;
+
+  h2 {
+    grid-column: 1 / 3;
+  }
+`;
+
+const Checkbox = styled.label`
+  grid-column: 1 / 3;
+`;
