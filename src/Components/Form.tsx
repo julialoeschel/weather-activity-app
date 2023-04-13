@@ -38,6 +38,7 @@ export default function From({ onAddActivity }: FormProps) {
 }
 
 const Form = styled.form`
+  margin-top: 1rem;
   padding: 0.5rem;
   display: grid;
   grid-template-columns: 20% 1fr;
